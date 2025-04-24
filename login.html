@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign IN and Sign Up Form</title>
+        <script src="https://kit.fontawesome.com/4cbf6271dc.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="login.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="form-box">
+                <h1 id="title">Sign Up</h1>
+                <form id="signupForm">
+                    <div class="input-group" id="signupInputGroup">
+                        <div class="input-field" id="nameField">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" placeholder="Name">
+                        </div>
+                        <div class="input-field">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" placeholder="Email">
+                        </div>
+                        <div class="input-field">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" placeholder="Password">
+                        </div>
+                        <p>Forget password <a href="#">Click Here!</a></p>
+                    </div>
+                    <div class="btn-field">
+                        <button type="submit" id="signupBtn">Sign Up</button>
+                        <button type="button" id="signinBtn" class="disable">Sign In</button>
+                    </div>
+                </form>
+                <form id="signinForm" style="display: none;">
+                    <div class="input-group">
+                        <div class="input-field">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" placeholder="Email">
+                        </div>
+                        <div class="input-field">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="btn-field">
+                        <button type="submit" id="signinSubmitBtn">Sign In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let signupForm = document.getElementById("signupForm");
+                let signinForm = document.getElementById("signinForm");
+                let signupInputGroup = document.getElementById("signupInputGroup");
+                let signupBtn = document.getElementById("signupBtn");
+                let signinBtn = document.getElementById("signinBtn");
+
+                signinBtn.addEventListener("click", function () {
+                    signupInputGroup.style.display = "none";
+                    signupForm.style.display = "none";
+                    signinForm.style.display = "block";
+                    document.getElementById("title").innerText = "Sign In";
+                    signinBtn.classList.add("disable");
+                    signupBtn.classList.remove("disable");
+                });
+
+                signupBtn.addEventListener("click", function () {
+                    signupInputGroup.style.display = "block";
+                    signupForm.style.display = "block";
+                    signinForm.style.display = "none";
+                    document.getElementById("title").innerText = "Sign Up";
+                    signinBtn.classList.remove("disable");
+                    signupBtn.classList.add("disable");
+                });
+
+                
+                signinForm.addEventListener("submit", function (event) {
+                    event.preventDefault(); 
+
+                    let email = document.querySelector("#signinForm input[type='email']").value;
+                    let password = document.querySelector("#signinForm input[type='password']").value;
+
+                    
+                    console.log("Sign in with email:", email);
+                    console.log("Password:", password);
+
+                    
+                    window.location.href = "index.html"; 
+                });
+            });
+        </script>
+    </body>
+</html>
